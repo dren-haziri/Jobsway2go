@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Models
 {
-    internal class Job
+    public class Job
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
@@ -18,6 +18,6 @@ namespace Jobsway2go.Core.Models
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public decimal Payment { get; set; }
-        public User Applicants { get; set; }
+        //public List<User> Applicants { get; set; }
     }
 }

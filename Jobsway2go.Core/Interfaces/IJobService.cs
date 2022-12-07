@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    internal interface IJobService
+    public interface IJobService
     {
         public void SearchJob();
         public void FilterByCategory(string category);

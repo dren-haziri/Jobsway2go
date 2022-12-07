@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Models
 {
-    internal class JobCategory
+    public class JobCategory
     {
         public int Id { get; set; }
         public string Name { get; set; }

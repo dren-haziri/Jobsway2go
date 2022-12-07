@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Jobsway2go.Core.Models;
 
-namespace Jobsway2go.Core.Interfaces
+namespace Jobsway2go.Core.Interfaces;
 
 public interface ISectionService:IRepository<Section>
 {

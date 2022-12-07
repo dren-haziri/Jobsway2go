@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jobsway2go.Core.Models
+namespace Jobsway2go.Core.Models;
 
 public class Section
 {

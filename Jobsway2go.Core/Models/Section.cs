@@ -1,5 +1,7 @@
 ﻿using System;
 
+namespace Jobsway2go.Core.Models;
+
 public class Section
 {
     public int Id { get; set; }

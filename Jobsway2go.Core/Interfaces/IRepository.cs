@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    public interface IRepository<T>//IRepository
+    public interface IRepository<T>
     {
         void Add(T entity);
         void AddRange(IEnumerable<T> entity);
@@ -17,8 +17,8 @@ namespace Jobsway2go.Core.Interfaces
         void UpdateRange(IEnumerable<T> entity);
         T GetById(int id);
         IEnumerable<T> GetAll();
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicte, params Expression<Func<T, object>>[] includes);
-        T FindOne(Expression<Func<T, bool>> predicte);
+        IEnumerable<T> Find(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
+        T FindOne(Expression<Func<T, bool>> predicate);
         int SaveChanges();
     }
 }

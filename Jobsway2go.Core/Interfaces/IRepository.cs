@@ -20,6 +20,5 @@ namespace Jobsway2go.Core.Interfaces
         IEnumerable<T> Find(Expression<Func<T, bool>> predicte, params Expression<Func<T, object>>[] includes);
         T FindOne(Expression<Func<T, bool>> predicte);
         int SaveChanges();
-
     }
 }

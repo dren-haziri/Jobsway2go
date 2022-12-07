@@ -8,14 +8,14 @@ namespace Jobsway2go.Core.Interfaces
 {
     public interface IUserService
     {
-        public Boolean SignIn { get; set; }
-        public Boolean SignOut { get; set; }
+         bool SignIn { get; set; }
+         bool SignOut { get; set; }
 
-        public Boolean Register { get; set; }
-        public Boolean EmailVerification { get;set; }
-        public Boolean EmailConfirmed { get; set; }
+        bool   Register { get; set; }
+        bool  EmailVerification { get;set; }
+        bool  EmailConfirmed { get; set; }
 
-        public Boolean EditProfile { get; set; }
-        public Boolean VerifyUser { get; set; } 
+        bool  EditProfile { get; set; }
+        bool  VerifyUser { get; set; } 
     }
 }

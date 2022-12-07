@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 
-public interface ISectionServices:IRepository<Section>
+public interface ISectionService:IRepository<Section>
 {
 
 }

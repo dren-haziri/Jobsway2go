@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T>//IRepository
     {
         void Add(T entity);
         void AddRange(IEnumerable<T> entity);

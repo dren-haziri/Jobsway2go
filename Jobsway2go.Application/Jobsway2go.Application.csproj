@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Jobsway2go.Core\Jobsway2go.Core.csproj" />
+  </ItemGroup>
+
 </Project>

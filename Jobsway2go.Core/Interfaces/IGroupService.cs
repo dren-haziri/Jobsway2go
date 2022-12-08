@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    internal interface IGroupService
+    public interface IGroupService
     {
+        void JoinGroup();
+        void LeaveGroup();
+        void Approve();
+        void Reject();
+        void Ban();
+        void Unban();
+
     }
 }

@@ -16,4 +16,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Jobsway2go.Infrastructure\Jobsway2go.Infrastructure.csproj" />
+    <ProjectReference Include="..\Jobsway2go.Application\Jobsway2go.Application.csproj" />
+    <ProjectReference Include="..\Jobsway2go.Core\Jobsway2go.Core.csproj" />
+  </ItemGroup>
+
 </Project>

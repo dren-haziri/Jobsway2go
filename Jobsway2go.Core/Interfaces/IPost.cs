@@ -1,9 +1,10 @@
-﻿using Jobsway2go.Core.Models;
+﻿using Jobsway2go.Core.Enums;
+using Jobsway2go.Core.Models;
 
 namespace Jobsway2go.Core.Interfaces;
 
-public interface IPost : IRepository<Post>
+public interface IPostService : IRepository<Post>
 {
-    public void SearchPost();
-    public void FilterByType(PostType type);
+    void SearchPost(); 
+    void FilterByType(PostType type);
 }

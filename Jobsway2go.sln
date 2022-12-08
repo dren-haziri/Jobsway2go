@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobsway2go.WebUI", "Jobsway2go.WebUI\Jobsway2go.WebUI.csproj", "{2CE6DD3D-9D30-44F8-BDA1-4EF03B71739F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobsway2go.Core", "Jobsway2go.Core\Jobsway2go.Core.csproj", "{8FAC582D-8E44-4183-8CCA-7605DFF579BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobsway2go.Core", "Jobsway2go.Core\Jobsway2go.Core.csproj", "{8FAC582D-8E44-4183-8CCA-7605DFF579BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobsway2go.Application", "Jobsway2go.Application\Jobsway2go.Application.csproj", "{EF639522-AE15-4530-9BE5-CEE3D83E6FD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobsway2go.Application", "Jobsway2go.Application\Jobsway2go.Application.csproj", "{EF639522-AE15-4530-9BE5-CEE3D83E6FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobsway2go.Infrastructure", "Jobsway2go.Infrastructure\Jobsway2go.Infrastructure.csproj", "{965142BD-EC0D-42DD-B1FF-31A8B0E41B9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobsway2go.Infrastructure", "Jobsway2go.Infrastructure\Jobsway2go.Infrastructure.csproj", "{965142BD-EC0D-42DD-B1FF-31A8B0E41B9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

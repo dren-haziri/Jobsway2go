@@ -10,4 +10,9 @@
     <Folder Include="Common\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Jobsway2go.Core\Jobsway2go.Core.csproj" />
+    <ProjectReference Include="..\Jobsway2go.Application\Jobsway2go.Application.csproj" />
+  </ItemGroup>
+
 </Project>

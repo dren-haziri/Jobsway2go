@@ -8,6 +8,8 @@ using Jobsway2go.Core.Models;
 
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Jobsway2go.Application.Services
 {
@@ -45,7 +47,7 @@ namespace Jobsway2go.Application.Services
             }
             else
                 return false;
-            //Nuk jomm tu dit qa me bo return a naj action to Index ??
+
             return false;
         }
     }

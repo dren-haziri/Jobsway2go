@@ -24,6 +24,7 @@ namespace Jobsway2go.Core.Models
         public string Courses { get; set; }
         public string References { get; set; }
         public Boolean IsPremium { get; set; }
+        public bool isActive { get; set; }
 
     }
 }

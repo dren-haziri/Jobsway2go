@@ -27,7 +27,12 @@ namespace Jobsway2go.Application.Services
         }
         public bool SignIn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool SignOut { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Register { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public bool Register { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool Register(ApplicationUser user) {
+
+
+            return true;
+        }
         public bool EmailVerification { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EmailConfirmed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EditProfile { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

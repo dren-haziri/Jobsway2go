@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jobsway2go.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Jobsway2go.Core.Interfaces
          bool SignIn { get; set; }
          bool SignOut { get; set; }
 
-        bool   Register { get; set; }
+        bool Register(ApplicationUser user);
         bool  EmailVerification { get;set; }
         bool  EmailConfirmed { get; set; }
 

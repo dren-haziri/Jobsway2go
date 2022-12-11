@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Jobsway2go.Core.Interfaces;
 using Jobsway2go.Core.Models;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using Microsoft.AspNetCore.Identity;
 
@@ -48,5 +48,8 @@ namespace Jobsway2go.Application.Services
             //Nuk jomm tu dit qa me bo return a naj action to Index ??
             return false;
         }
+
+        
+      
     }
 }

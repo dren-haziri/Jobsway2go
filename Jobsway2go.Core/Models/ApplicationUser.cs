@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser :IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

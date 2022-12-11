@@ -48,5 +48,10 @@ namespace Jobsway2go.Application.Services
             //Nuk jomm tu dit qa me bo return a naj action to Index ??
             return false;
         }
+        public async Task<bool> ForgotPassword(ForgotPasswordModel model)
+        {
+
+        }
+
     }
 }

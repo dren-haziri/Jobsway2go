@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jobsway2go.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,8 @@ namespace Jobsway2go.Core.Interfaces
         bool  VerifyUser { get; set; } 
 
         Task<bool> DeleteUser (string userId);
+
+        Task<bool> ForgotPassword(ForgotPasswordModel model);
+        Task<bool> ResetPassword(ResetPasswordModel model);
     }
 }

@@ -16,7 +16,7 @@ namespace Jobsway2go.Core.Interfaces
         bool  EmailConfirmed { get; set; }
 
         bool  EditProfile { get; set; }
-        bool  VerifyUser { get; set; } 
+        Task<bool> VerifyUser(string email, string password); 
 
         Task<bool> DeleteUser (string userId);
     }

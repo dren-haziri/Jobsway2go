@@ -10,6 +10,6 @@ namespace Jobsway2go.Core.Interfaces
     public interface ICollectionService : IRepository<Collection>
     {
         void SaveToCollection();
-        void Delete(int Id);
+        Task<bool> Delete(int Id);
     }
 }

@@ -9,7 +9,7 @@ namespace Jobsway2go.Core.Interfaces
 {
     public interface ICollectionService : IRepository<Collection>
     {
-        public void SaveToCollection();
-        public void Delete(int Id);
+        void SaveToCollection();
+        void Delete(int Id);
     }
 }

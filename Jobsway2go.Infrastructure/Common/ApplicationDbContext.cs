@@ -22,5 +22,6 @@ namespace Jobsway2go.Infrastructure.Common
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Section> Sections { get; set; }
+        public DbSet<Collection> Collections { get; set; }
     }
 }

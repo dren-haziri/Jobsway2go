@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jobsway2go.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    public interface IJobService
+    public interface IJobService: IRepository<Job>
     {
-        public void SearchJob();
-        public void FilterByCategory(string category);
-        public void FilterByCity(string city);
-        public void ApplyForJob();
-        public void UserSaveJob();
+         Job SearchJob(int jobToSearchId);
+         List<Job> FindAll();
+        //public void FilterByCategory(string category);
+        //public void FilterByCity(string city);
+        //public void ApplyForJob();
+        //public void UserSaveJob();
+        IEnumerable<Job> ListJobs();
     }
 }

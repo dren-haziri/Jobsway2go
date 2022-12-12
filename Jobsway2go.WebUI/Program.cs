@@ -1,3 +1,5 @@
+using Jobsway2go.Application.Services;
+using Jobsway2go.Core.Interfaces;
 using Jobsway2go.Core.Models;
 using Jobsway2go.Infrastructure.Common;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("JobPortalConString"));
 });
+
+builder.Services.AddScoped<IJobService, JobService>();
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
     opt =>

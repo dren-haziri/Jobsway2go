@@ -1,3 +1,5 @@
+using Jobsway2go.Application.Services;
+using Jobsway2go.Core.Interfaces;
 using Jobsway2go.Core.Models;
 using Jobsway2go.Infrastructure.Common;
 using Microsoft.AspNetCore.Identity;
@@ -5,23 +7,24 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("JobPortalConString"));
 });
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
-    opt =>
-    {
-        opt.Password.RequiredLength = 4;
-
-        opt.User.RequireUniqueEmail = true;
-    })
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddScoped<IGroupService, GroupService>();
+
+
 
 var app = builder.Build();
 

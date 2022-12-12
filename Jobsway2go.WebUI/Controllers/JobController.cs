@@ -24,7 +24,7 @@ namespace Jobsway2go.WebUI.Controllers
             return View(model);
         }
 
-        // GET: Product/Edit/5  
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -99,7 +99,7 @@ namespace Jobsway2go.WebUI.Controllers
         public IActionResult GetJobsJson()
         {
             var jobs = _JobService.GetAll();
-            //var jobtype = _JobService.GetAllJobTypes();
+            //var jobcategory = _JobService.GetAllJobTypes(); // ma vone mvyhet kur ta krijoj jobcategory
 
             var result = jobs.Select(x => new
             {
@@ -117,7 +117,7 @@ namespace Jobsway2go.WebUI.Controllers
 
             return new JsonResult(result);
         }
-        // POST: Product/Delete/5  
+        
 
         [HttpDelete]
         public IActionResult Delete(int id)

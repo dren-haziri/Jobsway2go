@@ -27,6 +27,10 @@ namespace Jobsway2go.Application.Services
         {
             return _context.Jobs.SingleOrDefault(x => x.Id == jobToSearchId);
         }
+        public Job FilterByLocation(string jobToSearchLocation)
+        {
+            return _context.Jobs.SingleOrDefault(x => x.Location == jobToSearchLocation);
+        }
         public List<Job> FindAll()
         {
             return _context.Jobs.ToList();
@@ -45,7 +49,8 @@ namespace Jobsway2go.Application.Services
 
         public void Remove(Job entity)
         {
-            throw new NotImplementedException();
+            _context.Jobs.Remove(entity);
+            _context.SaveChangesAsync();
         }
 
         public void RemoveRange(IEnumerable<Job> entity)
@@ -55,7 +60,8 @@ namespace Jobsway2go.Application.Services
 
         public void Update(Job entity)
         {
-            throw new NotImplementedException();
+            _context.Jobs.Update(entity);
+            _context.SaveChangesAsync();
         }
 
         public void UpdateRange(IEnumerable<Job> entity)
@@ -87,8 +93,7 @@ namespace Jobsway2go.Application.Services
         {
             throw new NotImplementedException();
         }
-    }
-   
+    }   
 }
 
 

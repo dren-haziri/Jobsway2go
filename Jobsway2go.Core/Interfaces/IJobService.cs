@@ -12,7 +12,7 @@ namespace Jobsway2go.Core.Interfaces
          Job SearchJob(int jobToSearchId);
          List<Job> FindAll();
         //public void FilterByCategory(string category);
-        //public void FilterByCity(string city);
+        Job FilterByLocation(string jobToSearchLocation);
         //public void ApplyForJob();
         //public void UserSaveJob();
         IEnumerable<Job> ListJobs();

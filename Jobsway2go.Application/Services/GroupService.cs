@@ -58,16 +58,6 @@ namespace Jobsway2go.Application.Services
             }
         }
 
-        public void Delete(int Id)
-        {
-            var group = _context.Groups.FirstOrDefault(g => g.Id == Id);
-            if (group != null)
-            {
-                _context.Groups.Remove(group);
-                _context.SaveChangesAsync();
-            }
-        }
-
         public void RemoveRange(IEnumerable<Group> entity)
         {
             throw new NotImplementedException();
@@ -85,6 +75,7 @@ namespace Jobsway2go.Application.Services
             {
                 group.Name = entity.Name;
                 _context.Groups.Update(group);
+                _context.SaveChangesAsync();
             }
         }
 

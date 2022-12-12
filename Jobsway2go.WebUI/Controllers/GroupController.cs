@@ -7,11 +7,9 @@ namespace Jobsway2go.WebUI.Controllers
     public class GroupController : Controller
     {
         private readonly IGroupService _groupService;
-        private readonly IApplicationDbContext _context;    
-        public GroupController (IApplicationDbContext ctx, IGroupService groupService)
+        public GroupController ( IGroupService groupService)
         {
             _groupService = groupService;
-            _context = ctx;
         }
 
         public IActionResult Index()
@@ -37,7 +35,6 @@ namespace Jobsway2go.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 _groupService.Add(group);
-                _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(group);
@@ -65,7 +62,6 @@ namespace Jobsway2go.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 _groupService.Update(group);
-                _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(group);
@@ -92,7 +88,6 @@ namespace Jobsway2go.WebUI.Controllers
         {
 
             _groupService.Remove(group);
-            _context.SaveChangesAsync();
             return RedirectToAction("Index");   
         }
 

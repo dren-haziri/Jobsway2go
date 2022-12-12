@@ -9,6 +9,5 @@ namespace Jobsway2go.Core.Interfaces
 {
     public interface IGroupService : IRepository<Group>
     {
-        void Delete(int Id);
     }
 }

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Group>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="margin:40px;">
+    <h1> Groups Manager</h1>
+    <p>
+        <a asp-controller="Group" asp-action="Create" class="btn btn-primary">Create Groups</a>
+    </p>
+  
+    <table class="table table-hover table-bordered" width="100%">
+        <thead>
+            <tr class="table">
+                <th>Group Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Name </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-controller="Group" asp-action="Update" asp-route-id="@obj.Id">Edit</a>
+                        <a class="btn btn-info btn-sm" asp-controller="Group" asp-action="Details" asp-route-id="@obj.Id">Details</a>
+                        <a class="btn btn-danger btn-sm" asp-controller="Group" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

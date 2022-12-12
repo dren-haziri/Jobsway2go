@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Jobsway2go.Infrastructure.Common;
 using Jobsway2go.Core.Interfaces;
 using Jobsway2go.Core.Models;
 
@@ -12,9 +11,17 @@ namespace Jobsway2go.Application.Services
 {
     public class CollectionService : ICollectionService
     {
+        private readonly IApplicationDbContext _context;
+
+        public CollectionService(IApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public void Add(Collection entity)
         {
-            throw new NotImplementedException();
+            _context.Collections.Add(entity);
+            _context.SaveChangesAsync();
         }
 
         public void AddRange(IEnumerable<Collection> entity)
@@ -44,12 +51,17 @@ namespace Jobsway2go.Application.Services
 
         public Collection GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Collections.FirstOrDefault(x => x.Id == id);
         }
 
         public void Remove(Collection entity)
         {
-            throw new NotImplementedException();
+            var collection = _context.Collections.FirstOrDefault(g => g.Id == entity.Id);
+            if (collection != null)
+            {
+                _context.Collections.Remove(collection);
+                _context.SaveChangesAsync();
+            }
         }
 
         public void RemoveRange(IEnumerable<Collection> entity)
@@ -69,7 +81,16 @@ namespace Jobsway2go.Application.Services
 
         public void Update(Collection entity)
         {
-            throw new NotImplementedException();
+            var collection = _context.Collections.FirstOrDefault(x => x.Id == entity.Id);
+            if (collection != null)
+            {
+                collection.User = entity.User;
+                collection.Name = entity.Name;
+                collection.Job = entity.Job;
+                collection.Post = entity.Post;
+                _context.Collections.Update(collection);
+                _context.SaveChangesAsync();
+            }
         }
 
         public void UpdateRange(IEnumerable<Collection> entity)

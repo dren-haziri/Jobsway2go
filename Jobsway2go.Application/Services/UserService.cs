@@ -49,7 +49,11 @@ namespace Jobsway2go.Application.Services
             return false;
         }
 
-        
-      
+
+        //logjika ke e kuptushme prej qatyne tutorials po ato krejt pe bojn ne controllers-rroni
+        public async Task<bool> SignInUser(string email, string password)
+        {
+            return true;
+        }
     }
 }

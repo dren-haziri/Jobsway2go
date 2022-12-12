@@ -20,5 +20,6 @@ namespace Jobsway2go.Core.Interfaces
         bool  VerifyUser { get; set; } 
 
         Task<bool> DeleteUser (string userId);
+        Task<bool> SignInUser (string email, string password);
     }
 }

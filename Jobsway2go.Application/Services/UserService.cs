@@ -8,6 +8,7 @@ using Jobsway2go.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using Microsoft.AspNetCore.Identity;
+using System.Linq.Expressions;
 
 namespace Jobsway2go.Application.Services
 {
@@ -29,11 +30,22 @@ namespace Jobsway2go.Application.Services
         public bool SignIn { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool SignOut { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         //public bool Register { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Register(ApplicationUser user) {
 
-
-            return true;
+        public async Task<bool> RegisterUser(string email)
+        {
+            ApplicationUser user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                IdentityResult result = await _userManager.CreateAsync(user);
+                if (result.Succeeded)
+                    return true;
+            }
+            else
+                return false;
+            
+            return false;
         }
+
         public bool EmailVerification { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EmailConfirmed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EditProfile { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -54,7 +66,64 @@ namespace Jobsway2go.Application.Services
             return false;
         }
 
-        
-      
+        public bool Register(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(ApplicationUser entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRange(IEnumerable<ApplicationUser> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(ApplicationUser entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveRange(IEnumerable<ApplicationUser> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ApplicationUser entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRange(IEnumerable<ApplicationUser> entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ApplicationUser GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ApplicationUser> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ApplicationUser> Find(Expression<Func<ApplicationUser, bool>> predicate, params Expression<Func<ApplicationUser, object>>[] includes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ApplicationUser FindOne(Expression<Func<ApplicationUser, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

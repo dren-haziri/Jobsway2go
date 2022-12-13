@@ -8,7 +8,7 @@ using Jobsway2go.Core.Models;
 
 namespace Jobsway2go.Core.Interfaces
 {
-    public interface IUserService
+    public interface IUserService: IRepository<ApplicationUser>
     {
          bool SignIn { get; set; }
          bool SignOut { get; set; }

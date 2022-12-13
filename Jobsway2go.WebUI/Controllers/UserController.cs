@@ -7,7 +7,12 @@ namespace Jobsway2go.WebUI.Controllers
 {
     public class UserController : Controller
     {
-        IUserService _userService;
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+        {
+
+            this._userService = userService;
+        }
         public IActionResult Index()
         {
             return View();

@@ -31,7 +31,7 @@ namespace Jobsway2go.Application.Services
 
         public void FilterByType(PostType type)
         {
-            throw new NotImplementedException();
+            var posts = _context.Posts.Where(p => p.Type == type);
         }
 
         public IEnumerable<Post> Find(Expression<Func<Post, bool>> predicate, params Expression<Func<Post, object>>[] includes)
@@ -74,9 +74,9 @@ namespace Jobsway2go.Application.Services
             throw new NotImplementedException();
         }
 
-        public void SearchPost()
+        public void SearchPost(string searchTerm)
         {
-            throw new NotImplementedException();
+            var posts = _context.Posts.Where(p => p.Title.Contains(searchTerm));
         }
 
         public void Update(Post entity)

@@ -5,6 +5,6 @@ namespace Jobsway2go.Core.Interfaces;
 
 public interface IPostService : IRepository<Post>
 {
-    void SearchPost(); 
+    void SearchPost(string searchTerm); 
     void FilterByType(PostType type);
 }

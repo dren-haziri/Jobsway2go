@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Jobsway2go.Core.Interfaces;
@@ -63,10 +64,9 @@ namespace Jobsway2go.Application.Services
             set => throw new NotImplementedException();
         }
 
-        public async Task<bool> VerifyUser(string email, string password)
+        public async Task<bool> VerifyUser(string name, string password)
         {
-            ApplicationUser user = await _userManager.FindByEmailAsync(email);
-
+            ApplicationUser user = await _userManager.FindByNameAsync(name);
             if (user != null)
             {
                 await _userManager.CheckPasswordAsync(user, password);

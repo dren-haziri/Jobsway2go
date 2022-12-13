@@ -46,7 +46,7 @@ namespace Jobsway2go.Application.Services
 
         public IEnumerable<Collection> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Collections.ToList();
         }
 
         public Collection GetById(int id)

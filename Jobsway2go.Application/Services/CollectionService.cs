@@ -29,9 +29,36 @@ namespace Jobsway2go.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(int Id)
+        public bool Delete(Post post, Collection collection)
         {
-            throw new NotImplementedException();
+            var c = _context.Collections.FirstOrDefault(g => g.Id == collection.Id);
+            if(c != null && post != null)
+            {
+                if (c.Post.Contains(post))
+                {
+                    c.Post.Remove(post);
+                    _context.Collections.Update(c);
+                    _context.SaveChangesAsync();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Delete(Job job, Collection collection)
+        {
+            var c = _context.Collections.FirstOrDefault(g => g.Id == collection.Id);
+            if (c != null && job != null)
+            {
+                if (c.Job.Contains(job))
+                {
+                    c.Job.Remove(job);
+                    _context.Collections.Update(c);
+                    _context.SaveChangesAsync();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public IEnumerable<Collection> Find(Expression<Func<Collection, bool>> predicate, params Expression<Func<Collection, object>>[] includes)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Jobsway2go.Core.Models;
 
 namespace Jobsway2go.Core.Interfaces
 {
@@ -18,5 +19,7 @@ namespace Jobsway2go.Core.Interfaces
 
         bool  EditProfile { get; set; }
         bool  VerifyUser { get; set; } 
+
+        Task<bool> DeleteUser (string userId);
     }
 }

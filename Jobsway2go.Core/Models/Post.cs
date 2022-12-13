@@ -4,7 +4,7 @@ namespace Jobsway2go.Core.Models;
 
 public class Post
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime CreatedAtUTC { get; set; }

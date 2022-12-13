@@ -98,10 +98,5 @@ namespace Jobsway2go.Application.Services
         {
             throw new NotImplementedException();
         }
-        public void Create(Post post)
-        {
-            Add(post);
-            _context.SaveChangesAsync();
-        }
     }
 }

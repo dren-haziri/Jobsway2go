@@ -14,12 +14,10 @@ namespace Jobsway2go.Application.Services
     public class RoleService : IRoleService
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IApplicationDbContext _dbContext;
 
-        public RoleService(RoleManager<IdentityRole> roleManager, IApplicationDbContext dbContext)
+        public RoleService(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
-            _dbContext = dbContext;
         }
 
         public void Add(Role entity)
@@ -34,24 +32,22 @@ namespace Jobsway2go.Application.Services
 
         public async Task<IdentityResult> CreateRole(Role role)
         {
-            var result = await _roleManager.CreateAsync(role);
+            //var result = await _roleManager.CreateAsync(role);
 
-            _dbContext.Roles.Add(role);
+            //await _dbContext.SaveChangesAsync();
 
-            await _dbContext.SaveChangesAsync();
-
-            return result;
+            //return result;
+            return await _roleManager.CreateAsync(role);
         }
 
         public async Task<IdentityResult> DeleteRole(Role role)
         {
-            var result = await _roleManager.DeleteAsync(role);
+            //var result = await _roleManager.DeleteAsync(role);
 
-            _dbContext.Roles.Remove(role);
+            //await _dbContext.SaveChangesAsync();
 
-            await _dbContext.SaveChangesAsync();
-
-            return result;
+            //return result;
+            return await _roleManager.DeleteAsync(role);
         }
 
         public IEnumerable<Role> Find(Expression<Func<Role, bool>> predicate, params Expression<Func<Role, object>>[] includes)
@@ -72,6 +68,11 @@ namespace Jobsway2go.Application.Services
         public Role GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IQueryable<IdentityRole> GetRoles()
+        {
+            return _roleManager.Roles.AsQueryable();
         }
 
         public void Remove(Role entity)

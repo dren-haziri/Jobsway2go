@@ -25,11 +25,11 @@ namespace Jobsway2go.WebUI.Controllers
             var result = await _roleService.CreateRole(role);
             if (result.Succeeded)
             {
-                return Ok();
+                return RedirectToAction("Index");
             }
             else
             {
-                return BadRequest(result.Errors);
+                return NotFound();
             }
         }
 
@@ -39,11 +39,11 @@ namespace Jobsway2go.WebUI.Controllers
             var result = await _roleService.DeleteRole(role);
             if (result.Succeeded)
             {
-                return Ok();
+                return RedirectToAction("Index");
             }
             else
             {
-                return BadRequest(result.Errors);
+                return NotFound();
             }
         }
 
@@ -51,7 +51,7 @@ namespace Jobsway2go.WebUI.Controllers
         public async Task<ActionResult<bool>> RoleExists(string roleName)
         {
             var exists = await _roleService.RoleExists(roleName);
-            return Ok(exists);
+            return View(exists);
         }
     }
 }

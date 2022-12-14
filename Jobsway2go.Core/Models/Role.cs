@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Jobsway2go.Core.Models
 {
-    public class Role:IdentityRole
+    public class Role : IdentityRole
     {
+        public List<Role> Roles { get; set; }
     }
 }

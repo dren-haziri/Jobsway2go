@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jobsway2go.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221213160124_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221214110528_AddCollectionDb")]
+    partial class AddCollectionDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,12 @@ namespace Jobsway2go.Infrastructure.Migrations
                     b.Property<string>("Certificates")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CompanyArea")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -61,6 +67,9 @@ namespace Jobsway2go.Infrastructure.Migrations
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IsPremium")
                         .HasColumnType("bit");
@@ -118,6 +127,28 @@ namespace Jobsway2go.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Jobsway2go.Core.Models.Collection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Collections");
+                });
+
             modelBuilder.Entity("Jobsway2go.Core.Models.Group", b =>
                 {
                     b.Property<int>("Id")
@@ -142,6 +173,9 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CollectionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
@@ -176,6 +210,8 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollectionId");
 
                     b.ToTable("Jobs");
                 });
@@ -225,6 +261,9 @@ namespace Jobsway2go.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("CollectionId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAtUTC")
                         .HasColumnType("datetime2");
 
@@ -244,6 +283,8 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollectionId");
 
                     b.ToTable("Posts");
                 });
@@ -284,6 +325,10 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -300,6 +345,8 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -408,6 +455,36 @@ namespace Jobsway2go.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Jobsway2go.Core.Models.Role", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.HasDiscriminator().HasValue("Role");
+                });
+
+            modelBuilder.Entity("Jobsway2go.Core.Models.Collection", b =>
+                {
+                    b.HasOne("Jobsway2go.Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Jobsway2go.Core.Models.Job", b =>
+                {
+                    b.HasOne("Jobsway2go.Core.Models.Collection", null)
+                        .WithMany("Job")
+                        .HasForeignKey("CollectionId");
+                });
+
+            modelBuilder.Entity("Jobsway2go.Core.Models.Post", b =>
+                {
+                    b.HasOne("Jobsway2go.Core.Models.Collection", null)
+                        .WithMany("Post")
+                        .HasForeignKey("CollectionId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -457,6 +534,13 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Jobsway2go.Core.Models.Collection", b =>
+                {
+                    b.Navigation("Job");
+
+                    b.Navigation("Post");
                 });
 #pragma warning restore 612, 618
         }

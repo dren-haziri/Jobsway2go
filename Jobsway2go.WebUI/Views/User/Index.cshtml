@@ -14,7 +14,9 @@
             <td>@user.UserName</td>
             <td>@user.Email</td>
             <td>
-                <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
     }

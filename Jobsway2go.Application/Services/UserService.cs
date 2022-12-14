@@ -29,21 +29,19 @@ namespace Jobsway2go.Application.Services
         }
 
 
-        public async Task<bool> DeleteUser(string userId)
+        public async Task<IdentityResult> DeleteUser(string userId)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                    return true;
+
+                return result;
+                            
             }
-            else
-                return false;
-
-            return false;
+           return IdentityResult.Failed();
         }
-
+        //duhet me e perfundu
 
         public async Task<IdentityResult> Register(RegisterUser appuser)
         {
@@ -58,11 +56,45 @@ namespace Jobsway2go.Application.Services
 
             if (result.Succeeded)
             {
-                 await _signInManager.SignInAsync(user, isPersistent: false);
+                var userRole = _roleManager.FindByNameAsync("User").Result;
+                if (userRole != null)
+                {
+                    await _userManager.AddToRoleAsync(user, userRole.Name);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                }
+
             }
             return result;
 
         }
+
+        public async Task<IdentityResult> RegisterBusiness(RegisterBusiness appuser)
+        {
+            ApplicationUser user = new ApplicationUser
+            {
+                Email = appuser.Email,
+                FirstName = appuser.FirstName,
+                LastName = appuser.FirstName,
+                UserName = appuser.UserName,
+                CompanyName = appuser.CompanyName,
+                CompanyArea = appuser.CompanyArea
+            };
+            IdentityResult result = await _userManager.CreateAsync(user, appuser.Password);
+
+            if (result.Succeeded)
+            {
+                var userRole = _roleManager.FindByNameAsync("Business").Result;
+                if (userRole != null)
+                {
+                    await _userManager.AddToRoleAsync(user, userRole.Name);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                }
+
+            }
+            return result;
+
+        }
+
         public IEnumerable<ApplicationUser> GetAll()
         {
             return _userManager.Users.ToList();

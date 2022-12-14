@@ -16,6 +16,7 @@ namespace Jobsway2go.Core.Interfaces
         DbSet<JobCategory> JobCategories { get; set; }
         DbSet<Notification> Notifications { get; set; }
         DbSet<Section> Sections { get; set; }
+        DbSet<Collection> Collections { get; set; }
         Task<int> SaveChangesAsync();
     }
 }

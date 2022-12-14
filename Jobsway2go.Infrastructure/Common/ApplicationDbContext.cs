@@ -25,6 +25,7 @@ namespace Jobsway2go.Infrastructure.Common
         public DbSet<Section> Sections { get; set; }
         public DbSet<Collection> Collections { get; set; }
 
+        public DbSet<Role> Roles { get; set; }
         public Task<int> SaveChangesAsync()
         {
             return base.SaveChangesAsync();

@@ -12,6 +12,7 @@ namespace Jobsway2go.Core.Interfaces
     {
         DbSet<Post> Posts { get; set; }
         DbSet<Group> Groups { get; set; }
+        DbSet<Collection> Collections { get; set; }
         DbSet<Job> Jobs { get; set; }
         DbSet<JobCategory> JobCategories { get; set; }
         DbSet<Notification> Notifications { get; set; }

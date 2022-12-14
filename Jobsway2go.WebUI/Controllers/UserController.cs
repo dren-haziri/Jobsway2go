@@ -9,9 +9,10 @@ namespace Jobsway2go.WebUI.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+
         public UserController(IUserService userService)
         {
-           
+
             _userService = userService;
         }
 
@@ -48,7 +49,30 @@ namespace Jobsway2go.WebUI.Controllers
         }
 
 
-    
+        public async Task<ActionResult> RegisterBusiness()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterBusiness(RegisterBusiness user)
+        {
+            var result = await _userService.RegisterBusiness(user);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View();
+        }
 
     }
 }

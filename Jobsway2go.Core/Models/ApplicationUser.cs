@@ -11,6 +11,9 @@ namespace Jobsway2go.Core.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public string? CompanyName { get; set; }
+        public string? CompanyArea { get; set; }
         public string?  Address { get; set; }
         public int? PhoneNumber { get; set; }
         public string? ImagePath { get; set; }
@@ -24,6 +27,7 @@ namespace Jobsway2go.Core.Models
         public string? Courses { get; set; }
         public string? References { get; set; }
         public Boolean? IsPremium { get; set; }
+        public Boolean? IsActive { get; set; }
 
     }
 }

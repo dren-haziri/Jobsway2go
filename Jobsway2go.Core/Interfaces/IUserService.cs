@@ -14,6 +14,7 @@ namespace Jobsway2go.Core.Interfaces
          bool SignOut { get; set; }
 
         Task<IdentityResult> Register(RegisterUser user);
+        Task<IdentityResult> RegisterBusiness(RegisterBusiness userB);
         IEnumerable<ApplicationUser> GetAll();
         bool  EmailVerification { get;set; }
         bool  EmailConfirmed { get; set; }

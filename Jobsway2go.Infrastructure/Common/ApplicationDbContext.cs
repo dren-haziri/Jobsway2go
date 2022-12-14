@@ -19,6 +19,7 @@ namespace Jobsway2go.Infrastructure.Common
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Collection> Collections { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<Notification> Notifications { get; set; }

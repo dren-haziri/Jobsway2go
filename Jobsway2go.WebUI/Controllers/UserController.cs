@@ -92,5 +92,34 @@ namespace Jobsway2go.WebUI.Controllers
 
                 return View("Index");
         }
+
+        public async Task<ActionResult> SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInUser loginModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.SignInUser(loginModel);
+                if (result.Succeeded)
+                {
+
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignOutUser()
+        {
+            await _userService.SignOutUser();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

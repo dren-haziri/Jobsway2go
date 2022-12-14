@@ -42,7 +42,6 @@ namespace Jobsway2go.Application.Services
 
         }
 
-
         public async Task<IdentityResult> DeleteUser(string userId)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
@@ -122,11 +121,6 @@ namespace Jobsway2go.Application.Services
         public bool EmailVerification { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EmailConfirmed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool EditProfile { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool VerifyUser { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-      
-      
 
-        
-      
     }
 }

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Jobsway2go.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jobsway2go.Core.Models
+namespace Jobsway2go.Core.Interfaces
 {
-    public class Role:IdentityRole
+    public interface IGroupService : IRepository<Group>
     {
     }
 }

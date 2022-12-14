@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Jobsway2go.Core.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Jobsway2go.Core.Interfaces
 {
@@ -20,5 +21,7 @@ namespace Jobsway2go.Core.Interfaces
         bool  VerifyUser { get; set; } 
 
         Task<bool> DeleteUser (string userId);
+        Task<SignInResult> SignInUser(string email, string password);
+        Task SignOutUser();
     }
 }

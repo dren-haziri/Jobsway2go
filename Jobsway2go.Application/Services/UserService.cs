@@ -49,7 +49,14 @@ namespace Jobsway2go.Application.Services
             return false;
         }
 
-        
-      
+        public async Task<SignInResult> SignInUser(string email, string password)
+        {
+            return await _signInManager.PasswordSignInAsync(email,password,false,false);
+        }
+
+        public async Task SignOutUser()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

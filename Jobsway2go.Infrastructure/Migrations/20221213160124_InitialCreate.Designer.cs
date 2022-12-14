@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jobsway2go.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221211194922_NewMigration")]
-    partial class NewMigration
+    [Migration("20221213160124_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -33,15 +33,12 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Badges")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Certificates")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -49,7 +46,6 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Courses")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -64,10 +60,9 @@ namespace Jobsway2go.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsPremium")
+                    b.Property<bool?>("IsPremium")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
@@ -91,14 +86,13 @@ namespace Jobsway2go.Infrastructure.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber")
+                    b.Property<int?>("PhoneNumber")
                         .HasColumnType("int");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("References")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
@@ -225,8 +219,11 @@ namespace Jobsway2go.Infrastructure.Migrations
 
             modelBuilder.Entity("Jobsway2go.Core.Models.Post", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("CreatedAtUTC")
                         .HasColumnType("datetime2");

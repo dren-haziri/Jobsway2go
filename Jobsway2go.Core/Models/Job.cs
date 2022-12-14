@@ -19,5 +19,6 @@ namespace Jobsway2go.Core.Models
         public DateTime DateTo { get; set; }
         public decimal Payment { get; set; }
         //public List<User> Applicants { get; set; }
+        public List<CollectionJob> CollectionJob { get; set; }
     }
 }

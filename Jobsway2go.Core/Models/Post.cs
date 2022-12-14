@@ -10,4 +10,6 @@ public class Post
     public DateTime CreatedAtUTC { get; set; }
     public string CreatedByUserId { get; set; }
     public PostType Type { get; set; }
+
+    public List<CollectionPost> CollectionPost { get; set;}
 }

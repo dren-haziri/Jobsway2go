@@ -15,7 +15,8 @@ namespace Jobsway2go.WebUI.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var roles = _roleService.GetAll();
+            return View(roles);
         }
 
         [HttpPost]

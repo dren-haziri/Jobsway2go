@@ -23,7 +23,7 @@ namespace Jobsway2go.Infrastructure.Common
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Section> Sections { get; set; }
-
+        public DbSet<Role> Roles { get; set; }
         public Task<int> SaveChangesAsync()
         {
             return base.SaveChangesAsync();

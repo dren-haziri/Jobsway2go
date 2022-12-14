@@ -22,6 +22,6 @@ namespace Jobsway2go.Core.Interfaces
         bool  EditProfile { get; set; }
         bool  VerifyUser { get; set; }
 
-        Task<bool> DeleteUser(string userId);
+        Task<IdentityResult> DeleteUser(string userId);
     }
 }

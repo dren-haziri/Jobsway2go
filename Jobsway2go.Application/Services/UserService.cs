@@ -29,19 +29,17 @@ namespace Jobsway2go.Application.Services
         }
 
 
-        public async Task<bool> DeleteUser(string userId)
+        public async Task<IdentityResult> DeleteUser(string userId)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    return true;
-                }
-                   
+
+                return result;
+                            
             }
-            return false;
+           return IdentityResult.Failed();
         }
         //duhet me e perfundu
 
@@ -61,7 +59,7 @@ namespace Jobsway2go.Application.Services
                 var userRole = _roleManager.FindByNameAsync("User").Result;
                 if (userRole != null)
                 {
-                    IdentityResult resultrole = await _userManager.AddToRoleAsync(user, userRole.Name);
+                    await _userManager.AddToRoleAsync(user, userRole.Name);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                 }
 
@@ -88,7 +86,7 @@ namespace Jobsway2go.Application.Services
                 var userRole = _roleManager.FindByNameAsync("Business").Result;
                 if (userRole != null)
                 {
-                    IdentityResult resultrole = await _userManager.AddToRoleAsync(user, userRole.Name);
+                    await _userManager.AddToRoleAsync(user, userRole.Name);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                 }
 

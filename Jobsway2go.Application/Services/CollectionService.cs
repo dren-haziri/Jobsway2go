@@ -29,7 +29,7 @@ namespace Jobsway2go.Application.Services
             throw new NotImplementedException();
         }
 
-        public bool Delete(Post post)
+        public bool Delete(Post post, Collection collection)
         {
             var c = _context.Collections.FirstOrDefault(g => g.Id == collection.Id);
             if(c != null && post != null)
@@ -45,7 +45,7 @@ namespace Jobsway2go.Application.Services
             return false;
         }
 
-        public bool Delete(Job job)
+        public bool Delete(Job job, Collection collection)
         {
             var c = _context.Collections.FirstOrDefault(g => g.Id == collection.Id);
             if (c != null && job != null)

@@ -1,4 +1,5 @@
 ﻿using Jobsway2go.Application.Services;
+using Jobsway2go.Core.Interfaces;
 using Jobsway2go.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,15 +8,15 @@ namespace Jobsway2go.WebUI.Controllers
 {
     public class RoleController : Controller
     {
-        private readonly RoleService _roleService;
+        private readonly IRoleService _roleService;
 
-        public RoleController(RoleService roleService)
+        public RoleController(IRoleService roleService)
         {
             _roleService = roleService;
         }
         public IActionResult Index()
         {
-            var roles = _roleService.GetAll();
+            var roles = _roleService.GetRoles();
             return View(roles);
         }
 

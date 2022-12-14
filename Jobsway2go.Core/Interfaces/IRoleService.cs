@@ -11,5 +11,8 @@ namespace Jobsway2go.Core.Interfaces
     public interface IRoleService : IRepository<Role>
     {
         IQueryable<IdentityRole> GetRoles();
+        Task CreateRole(Role role);
+        Task DeleteRole(Role role);
+        Task<bool> RoleExists(string roleName);
     }
 }

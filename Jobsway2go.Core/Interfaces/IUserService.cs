@@ -23,5 +23,8 @@ namespace Jobsway2go.Core.Interfaces
         bool  VerifyUser { get; set; }
 
         Task<IdentityResult> DeleteUser(string userId);
+
+        Task<SignInResult> SignInUser(SignInUser signIn);
+        Task SignOutUser();
     }
 }

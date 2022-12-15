@@ -95,6 +95,18 @@ namespace Jobsway2go.Application.Services
 
         }
 
+        public async Task<SignInResult> SignInUser(SignInUser signIn)
+        {
+            return await _signInManager.PasswordSignInAsync(signIn.Username, signIn.Password, false, false);
+        }
+
+        public async Task SignOutUser()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
+
+
         public IEnumerable<ApplicationUser> GetAll()
         {
             return _userManager.Users.ToList();
